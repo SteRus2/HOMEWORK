@@ -2,8 +2,7 @@ package ru.sterus.Java2.lessonA;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class GameCanvas extends JPanel {
 
