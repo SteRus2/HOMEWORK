@@ -43,3 +43,4 @@ public class Sprite {
     void update(GameCanvas canvas, float deltatime) {}
     void render(GameCanvas canvas, Graphics g) {}
 }
+

@@ -20,6 +20,7 @@ public class Ball extends Sprite{
         vY = (float) (100f + Math.random() * 200f);
     }
 
+
     @Override
     void update(GameCanvas canvas, float deltaTime) {
         x += vX * deltaTime;
