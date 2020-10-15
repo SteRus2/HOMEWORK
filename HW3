@@ -1,0 +1,73 @@
+package ru.sterus.Java2.lessonC;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    private static final ArrayList<String> text = new ArrayList<>(Arrays.asList("apple", "banana", "lime", "mango", "apple", "pineapple", "blueberry", "banana", "peanut"));
+    private static ArrayList<String> answer = new ArrayList<>();
+
+    private static Map<String, Integer> map = new HashMap<>();
+
+    private static class PhoneBook{
+        static HashMap<String, ArrayList> book = new HashMap<>();
+
+        PhoneBook(Person[] personArray){
+            for(Person p: personArray){
+                if(!book.containsKey(p.info.get(0))){
+                    book.put(p.info.get(0), new ArrayList<String>(Arrays.asList(p.info.get(1), p.info.get(2))));
+                }
+            }
+        }
+
+        ArrayList<String> searchPhone(String secondName){
+            return (ArrayList<String>) book.get(secondName).get(0);
+        }
+
+        ArrayList<String> searchEmail(String secondName){
+            return (ArrayList<String>) book.get(secondName).get(1);
+        }
+    }
+    private static class Person{
+        ArrayList<String> info = new ArrayList<>();
+        Person(String secondName, String phone, String email){
+            info.addAll(Arrays.asList(secondName, phone, email));
+        }
+
+        @Override
+        public String toString() {
+            return "Person{" +
+                    "info=" + info +
+                    '}';
+        }
+    }
+
+    public static void main(String[] args){
+        for(String s: text){
+            if (!answer.contains(s)){
+                answer.add(s);
+            }
+        }
+        System.out.println(answer);
+
+        for(String s: text){
+            if(!map.containsKey(s)){
+                map.put(s, 1);
+            } else {
+                map.put(s, map.get(s) + 1);
+            }
+        }
+        System.out.println(map);
+
+        Person a1 = new Person("ivan1", "7901", "ivan1@mail.com");
+        Person a2 = new Person("ivan2", "7902", "ivan2@mail.com");
+        Person a3 = new Person("ivan3", "7903", "ivan3@mail.com");
+        Person a4 = new Person("ivan4", "7904", "ivan4@mail.com");
+        PhoneBook book = new PhoneBook(new Person[]{a1, a2, a3, a4});
+        System.out.println(book.searchPhone("ivan1"));
+
+
+    }
+}
